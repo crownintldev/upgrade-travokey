@@ -43,7 +43,7 @@ import CustomOpenDrawer from 'src/common/customButton/CustomOpenDrawer'
 //Form
 import AgentandClientForm from 'src/common/forms/member/AgentandClientForm'
 import CompanyForm from 'src/common/forms/member/CompanyForm'
-import countries from './Countries'
+import countries from './Countries.json'
 
 const schema = yup.object().shape({
   cnic: yup
@@ -163,13 +163,10 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
     }
   }, [passportNumber, _id])
 
-  // console.log(editId)
-
   useEffect(() => {
     setValue('deletedFiles', removeFiles)
   }, [previousFiles, setRemoveFiles])
-// console.log("removeFiles",removeFiles)
-// console.log("getValue",getValues("deletedFiles"))
+
   const watchedOnModel = watch('onModel')
 
   const handleClose = () => {
@@ -180,8 +177,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
 
   const passportField1 = [
     {
-      name: 'passportNumber',
-      required: true
+      name: 'passportNumber'
     },
     {
       name: 'bookletNumber'

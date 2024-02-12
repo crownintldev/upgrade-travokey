@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Button } from '@mui/material'
+// import { Button } from '@mui/material'
+import { Button } from '@/components/ui/button'
+
 import toast from 'react-hot-toast'
 import FormDrawer from 'src/common/drawer/FormDrawer'
 import EditVisaBookingForm from '../visaBooking/EditVisaBookingForm'
@@ -72,7 +74,7 @@ const PassportSubmitButton = ({
       if (removeSelection) {
         removeSelection()
       }
-  
+
       setDrawerOpen(true)
       formData = new FormData()
     } catch (err) {
@@ -83,7 +85,7 @@ const PassportSubmitButton = ({
 
   return (
     <div>
-      <Button variant='contained' sx={{ mr: 3 }} onClick={onSubmit}>
+      <Button className='px-4 py-1 border-2' variant='primary'>
         Submit
       </Button>
       <FormDrawer
