@@ -218,7 +218,14 @@ const Dialog = styled(MuiDialog)({
 
 const NoResult = ({ value, setOpenDialog }) => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}
+    >
       <Box sx={{ mb: 2.5, color: 'text.primary' }}>
         <Icon icon='tabler:file-off' fontSize='5rem' />
       </Box>
@@ -294,7 +301,11 @@ const DefaultSuggestions = ({ setOpenDialog }) => {
     <Grid container spacing={6} sx={{ ml: 0 }}>
       {defaultSuggestionsData.map((item, index) => (
         <Grid item xs={12} sm={6} key={index}>
-          <Typography component='p' variant='overline' sx={{ lineHeight: 1.25, color: 'text.disabled' }}>
+          <Typography
+            component='p'
+            variant='overline'
+            sx={{ lineHeight: 1.25, color: 'text.disabled' }}
+          >
             {item.category}
           </Typography>
           <List sx={{ py: 2.5 }}>
@@ -345,7 +356,7 @@ const AutocompleteComponent = ({ hidden, settings }) => {
       .get('/app-bar/search', {
         params: { q: searchValue }
       })
-      .then(response => {
+      .then((response) => {
         if (response.data && response.data.length) {
           setOptions(response.data)
         } else {
@@ -365,7 +376,7 @@ const AutocompleteComponent = ({ hidden, settings }) => {
   }, [])
 
   // Handle click event on a list item in search result
-  const handleOptionClick = obj => {
+  const handleOptionClick = (obj) => {
     setSearchValue('')
     setOpenDialog(false)
     if (obj.url) {
@@ -375,7 +386,7 @@ const AutocompleteComponent = ({ hidden, settings }) => {
 
   // Handle ESC & shortcut keys keydown events
   const handleKeydown = useCallback(
-    event => {
+    (event) => {
       // ** Shortcut keys to open searchbox (Ctrl + /)
       if (!openDialog && event.ctrlKey && event.which === 191) {
         setOpenDialog(true)
@@ -386,7 +397,7 @@ const AutocompleteComponent = ({ hidden, settings }) => {
 
   // Handle shortcut keys keyup events
   const handleKeyUp = useCallback(
-    event => {
+    (event) => {
       // ** ESC key to close searchbox
       if (openDialog && event.keyCode === 27) {
         setOpenDialog(false)
@@ -412,14 +423,24 @@ const AutocompleteComponent = ({ hidden, settings }) => {
         onClick={() => !openDialog && setOpenDialog(true)}
         sx={{ display: 'flex', cursor: 'pointer', alignItems: 'center' }}
       >
-        <IconButton color='inherit' sx={!hidden && layout === 'vertical' ? { mr: 0.5, ml: -2.75 } : {}}>
+        <IconButton
+          color='inherit'
+          sx={!hidden && layout === 'vertical' ? { mr: 0.5, ml: -2.75 } : {}}
+        >
           <Icon fontSize='1.625rem' icon='tabler:search' />
         </IconButton>
         {!hidden && layout === 'vertical' ? (
-          <Typography sx={{ userSelect: 'none', color: 'text.disabled' }}>Search (Ctrl+/)</Typography>
+          <Typography sx={{ userSelect: 'none', color: 'text.disabled' }}>
+            Search (Ctrl+/)
+          </Typography>
         ) : null}
         {openDialog && (
-          <Dialog fullWidth open={openDialog} fullScreen={fullScreenDialog} onClose={() => setOpenDialog(false)}>
+          <Dialog
+            fullWidth
+            open={openDialog}
+            fullScreen={fullScreenDialog}
+            onClose={() => setOpenDialog(false)}
+          >
             <Box sx={{ top: 0, width: '100%', position: 'sticky' }}>
               <Autocomplete
                 autoHighlight
@@ -429,9 +450,13 @@ const AutocompleteComponent = ({ hidden, settings }) => {
                 isOptionEqualToValue={() => true}
                 onInputChange={(event, value) => setSearchValue(value)}
                 onChange={(event, obj) => handleOptionClick(obj)}
-                noOptionsText={<NoResult value={searchValue} setOpenDialog={setOpenDialog} />}
-                getOptionLabel={option => option.title || ''}
-                groupBy={option => (searchValue.length ? categoryTitle[option.category] : '')}
+                noOptionsText={
+                  <NoResult value={searchValue} setOpenDialog={setOpenDialog} />
+                }
+                getOptionLabel={(option) => option.title || ''}
+                groupBy={(option) =>
+                  searchValue.length ? categoryTitle[option.category] : ''
+                }
                 sx={{
                   '& + .MuiAutocomplete-popper': {
                     ...(searchValue.length
@@ -447,13 +472,13 @@ const AutocompleteComponent = ({ hidden, settings }) => {
                         })
                   }
                 }}
-                renderInput={params => {
+                renderInput={(params) => {
                   return (
                     <TextField
                       {...params}
                       value={searchValue}
-                      onChange={event => setSearchValue(event.target.value)}
-                      inputRef={input => {
+                      onChange={(event) => setSearchValue(event.target.value)}
+                      inputRef={(input) => {
                         if (input) {
                           if (openDialog) {
                             input.focus()
@@ -464,7 +489,10 @@ const AutocompleteComponent = ({ hidden, settings }) => {
                       }}
                       InputProps={{
                         ...params.InputProps,
-                        sx: { p: `${theme.spacing(3.75, 6)} !important`, '&.Mui-focused': { boxShadow: 0 } },
+                        sx: {
+                          p: `${theme.spacing(3.75, 6)} !important`,
+                          '&.Mui-focused': { boxShadow: 0 }
+                        },
                         startAdornment: (
                           <InputAdornment position='start' sx={{ color: 'text.primary' }}>
                             <Icon fontSize='1.5rem' icon='tabler:search' />
@@ -474,9 +502,17 @@ const AutocompleteComponent = ({ hidden, settings }) => {
                           <InputAdornment
                             position='end'
                             onClick={() => setOpenDialog(false)}
-                            sx={{ display: 'flex', cursor: 'pointer', alignItems: 'center' }}
+                            sx={{
+                              display: 'flex',
+                              cursor: 'pointer',
+                              alignItems: 'center'
+                            }}
                           >
-                            {!hidden ? <Typography sx={{ mr: 2.5, color: 'text.disabled' }}>[esc]</Typography> : null}
+                            {!hidden ? (
+                              <Typography sx={{ mr: 2.5, color: 'text.disabled' }}>
+                                [esc]
+                              </Typography>
+                            ) : null}
                             <IconButton size='small' sx={{ p: 1 }}>
                               <Icon icon='tabler:x' fontSize='1.25rem' />
                             </IconButton>
@@ -493,7 +529,9 @@ const AutocompleteComponent = ({ hidden, settings }) => {
                       key={option.title}
                       className={`suggestion ${props.className}`}
                       onClick={() => handleOptionClick(option)}
-                      secondaryAction={<Icon icon='tabler:corner-down-left' fontSize='1.25rem' />}
+                      secondaryAction={
+                        <Icon icon='tabler:corner-down-left' fontSize='1.25rem' />
+                      }
                       sx={{
                         '& .MuiListItemSecondaryAction-root': {
                           '& svg': {

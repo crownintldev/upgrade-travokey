@@ -58,8 +58,11 @@ const schema = yup.object().shape({
     .typeError('Invalid CNIC format, only numbers are allowed'),
   country: yup.string().required('Country is required'),
   dob: yup.date().required('Date of Birth is required'),
-  doi: yup.string().required('Digital Object Identifier'),
-  doe: yup.date().required('Date of Expiry is required'),
+  dateOfBirth: yup.number().required('Date of birth is required'),
+  dateOfIssue: yup.number().required('Date of issue is required'),
+  dateOfExpire: yup.number().required('Date of expire is required'),
+  // doi: yup.string().required('Digital Object Identifier'),
+  // doe: yup.date().required('Date of Expiry is required'),
   pob: yup.string().required('Place of Birth is required'),
   gender: yup.string().required('Gender is required'),
   givenName: yup.string().required('Given Name is required'),
@@ -197,6 +200,21 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
     {
       name: 'pob',
       required: true
+    },
+    {
+      name: 'dateOfBirth',
+      required: true,
+      placeholder: 'Insert date of birth'
+    },
+    {
+      name: 'dateOfIssue',
+      required: true,
+      placeholder: 'Insert date of issue'
+    },
+    {
+      name: 'dateOfExpire',
+      required: true,
+      placeholder: 'Insert date of expire'
     }
   ]
 
@@ -338,7 +356,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               }}
             />
           </Grid> */}
-          <Grid item md={6} lg={4} sx={{ mb: 4 }}>
+          {/* <Grid item md={6} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='dob'
               placeholder='Date of Birth'
@@ -346,8 +364,8 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               control={control}
               errors={errors}
             />
-          </Grid>
-          <Grid item md={4} lg={4} sx={{ mb: 4 }}>
+          </Grid> */}
+          {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='doi'
               placeholder='Date of Issue'
@@ -355,8 +373,8 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               control={control}
               errors={errors}
             />
-          </Grid>
-          <Grid item md={4} lg={4} sx={{ mb: 4 }}>
+          </Grid> */}
+          {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='doe'
               placeholder='Date of Expire'
@@ -365,7 +383,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               errors={errors}
               className='inputdate'
             />
-          </Grid>
+          </Grid> */}
 
           <Grid item md={6} lg={4}>
             <SimpleSelectHookField

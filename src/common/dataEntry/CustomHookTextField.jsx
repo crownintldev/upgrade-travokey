@@ -21,42 +21,63 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
 
     const formatPassportNumber = (value) => {
       if (value.length <= 2) {
-        return value.toUpperCase() // Convert the first two characters to uppercase
+        return value.toUpperCase()
       } else {
-        // If value is longer than 2 characters and doesn't already have a dash
         if (value.length > 2 && value[2] !== '-') {
-          const letters = value.slice(0, 2).toUpperCase() // Get first two characters
+          const letters = value.slice(0, 2).toUpperCase()
           const rest = value.slice(2)
-          return `${letters}-${rest}` // Insert dash after the first two characters
+          return `${letters}-${rest}`
         }
         return value
       }
     }
 
+    const formatDate = (value) => {
+      const numericValue = value.replace(/[^\d]/g, '')
+      return numericValue
+        .split('')
+        .map((char, index) => (index === 2 || index === 4 ? `/${char}` : char))
+        .join('')
+        .slice(0, 10)
+    }
     const handleOnChange = (item, onChange) => (event) => {
       let value = event.target.value
-      if (item.name === 'passportNumber') {
-        value = formatPassportNumber(value)
+
+      switch (item.name) {
+        case 'passportNumber':
+          value = formatPassportNumber(value)
+          break
+        case 'dateOfIssue':
+        case 'dateOfBirth':
+        case 'dateOfExpire':
+          value = formatDate(value)
+          break
+        default:
+          // No special formatting
+          break
       }
+
+      console.log('validate in', value)
+
       onChange(value)
     }
 
     return (
       <>
-        {/* {textarea ? (
-          <MuiTextAreaHookField
-            control={control}
-            errors={errors}
-            name={name}
-            placeholder={placeholder}
-            rows={rows}
-          />
-        ) : ( */}
         <Controller
-          // key={name}
           name={name}
           control={control}
-          rules={{ required: true }}
+          rules={{
+            required: true,
+            validate: {
+              validDate: (value) =>
+                item.name === 'dateOfExpire' ||
+                item.name === 'dateOfIssue' ||
+                item.name === 'dateOfBirth'
+                  ? isValidDate(value) || 'Invalid date'
+                  : true
+            }
+          }}
           render={({ field: { value, onChange } }) => (
             <CustomTextField
               required={required}
@@ -73,7 +94,6 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
               }
               sx={{ mb: 4 }}
               label={label ? label : capitalizeCamelSpace(name)}
-              // onChange={onChange}
               onChange={handleOnChange(item, onChange)}
               placeholder={
                 placeholder ? placeholder : `Enter ${capitalizeCamelSpace(name)}`
@@ -83,7 +103,6 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
             />
           )}
         />
-        {/* )} */}
       </>
     )
   }
