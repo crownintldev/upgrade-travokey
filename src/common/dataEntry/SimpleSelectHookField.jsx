@@ -48,6 +48,7 @@
 
 // export default SimpleSelectHookField
 
+// updated component
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
