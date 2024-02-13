@@ -3,9 +3,10 @@ import { forwardRef } from 'react'
 
 // ** MUI Imports
 import { styled } from '@mui/material/styles'
-import TextField from '@mui/material/TextField'
+// import TextField from '@mui/material/TextField'
+import { Input } from '@/components/ui/input'
 
-const TextFieldStyled = styled(TextField)(({ theme }) => ({
+const TextFieldStyled = styled(Input)(({ theme }) => ({
   alignItems: 'flex-start',
   '& .MuiInputLabel-root': {
     transform: 'none',
@@ -162,13 +163,13 @@ const CustomTextField = forwardRef((props, ref) => {
   const { size = 'small', InputLabelProps, ...rest } = props
 
   return (
-    <TextFieldStyled
+    <Input
       size={size}
       inputRef={ref}
       {...rest}
       variant='filled'
       InputLabelProps={{ ...InputLabelProps, shrink: true }}
-      autoComplete="off" 
+      autoComplete='off'
     />
   )
 })
