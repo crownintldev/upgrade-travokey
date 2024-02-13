@@ -4982,6 +4982,11 @@ ms@^2.1.1, ms@2.1.2:
 ms@^2.1.2:
   version "2.1.3"
 
+mui@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/mui/-/mui-0.0.1.tgz"
+  integrity sha512-iB9zfxsJBcMkZ/SY6X+HGSPr4fftCZIQ76ZMH8iSMfVkidVzRtZlLW2gbWXUe+IMcj8JLv1p+dGKvPVlgtiocA==
+
 multipipe@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/multipipe/-/multipipe-1.0.2.tgz"

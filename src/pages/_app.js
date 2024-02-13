@@ -82,7 +82,7 @@ const Guard = ({ children, authGuard, guestGuard }) => {
 }
 
 // ** Configure JSS & ClassName
-const App = props => {
+const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
   // Variables
@@ -90,7 +90,7 @@ const App = props => {
 
   const getLayout =
     Component.getLayout ??
-    (page => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>)
+    ((page) => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>)
   const setConfig = Component.setConfig ?? undefined
   const authGuard = Component.authGuard ?? true
   const guestGuard = Component.guestGuard ?? false
@@ -118,7 +118,7 @@ const App = props => {
                     <Guard authGuard={authGuard} guestGuard={guestGuard}>
                       <AclGuard
                         aclAbilities={aclAbilities}
-                        guestGuard={guestGuard} 
+                        guestGuard={guestGuard}
                         authGuard={authGuard}
                       >
                         {getLayout(<Component {...pageProps} />)}

@@ -21,7 +21,11 @@ class CustomDocument extends Document {
             rel='stylesheet'
             href='https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap'
           />
-          <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
+          <link
+            rel='apple-touch-icon'
+            sizes='180x180'
+            href='/images/apple-touch-icon.png'
+          />
           <link rel='shortcut icon' href='/images/favicon.svg' />
         </Head>
         <body>
@@ -32,13 +36,13 @@ class CustomDocument extends Document {
     )
   }
 }
-CustomDocument.getInitialProps = async ctx => {
+CustomDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage
   const cache = createEmotionCache()
   const { extractCriticalToChunks } = createEmotionServer(cache)
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props =>
+      enhanceApp: (App) => (props) =>
         (
           <App
             {...props} // @ts-ignore
@@ -49,7 +53,7 @@ CustomDocument.getInitialProps = async ctx => {
   const initialProps = await Document.getInitialProps(ctx)
   const emotionStyles = extractCriticalToChunks(initialProps.html)
 
-  const emotionStyleTags = emotionStyles.styles.map(style => {
+  const emotionStyleTags = emotionStyles.styles.map((style) => {
     return (
       <style
         key={style.key}

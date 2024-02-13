@@ -12,7 +12,7 @@
     "build:icons": "node src/iconify-bundle/bundle-icons-react.js",
     "gitpush": "git add . && git commit -m 'hamail' && git push origin hamail",
     "gitmerge": "git checkout main && git pull origin main && git merge hamail && git commit -m 'main' && git push origin main && git checkout hamail",
-    "salikpush": "git add . && git commit -m \"salik-committed $(date +'%d-%m-%y %I:%M %p')\" && git push"
+    "salikpush": "git add . && git commit -m 'salik-committed' && git push"
   },
   "dependencies": {
     "@babel/core": "7.21.5",
@@ -75,6 +75,7 @@
     "keen-slider": "6.8.5",
     "mantine-react-table": "^1.3.4",
     "material-react-table": "^2.4.1",
+    "mui": "^0.0.1",
     "next": "13.3.2",
     "npm": "^10.2.5",
     "nprogress": "0.2.0",
