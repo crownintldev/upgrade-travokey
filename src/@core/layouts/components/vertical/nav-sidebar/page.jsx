@@ -26,7 +26,7 @@ const MainMenu = (Props) => {
 
   return (
     <>
-      <div className='flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700 border-l-1 mt-10'>
+      <div className='flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700 border-l-1 mt-9'>
         {mainNavLinks.map((item) => (
           <div
             key={item.title}
