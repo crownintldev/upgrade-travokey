@@ -5,13 +5,9 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { Tooltip } from 'react-tooltip'
 
-// Shadcn Imports
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-
 // Normal Imports
 import ChildMenus from './child-sidebar'
 import mainNavLinks from './main-menu-items'
-import { homeItems } from './child-menu-items'
 
 const MainMenu = (Props) => {
   const [selectedTitle, setSelectedTitle] = useState('')

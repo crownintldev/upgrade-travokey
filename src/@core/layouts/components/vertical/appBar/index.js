@@ -1,9 +1,3 @@
-// ** Util Import
-import { Avatar } from '@mui/material'
-import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
-import Link from 'src/@core/theme/overrides/link'
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-import Image from 'next/image'
 
 const LayoutAppBar = (props) => {
   // ** Props
@@ -11,30 +5,6 @@ const LayoutAppBar = (props) => {
 
   // ** Vars
   const { skin, appBar, appBarBlur, contentWidth } = settings
-
-  // const appBarBlurEffect = appBarBlur && {
-  //   '&:after': {
-  //     top: 0,
-  //     left: 0,
-  //     zIndex: -20,
-  //     width: '100%',
-  //     content: '""',
-  //     position: 'absolute',
-  //     backdropFilter: 'blur(10px)',
-  //     height: (theme) =>
-  //       `calc(${theme.mixins.toolbar.minHeight}px + ${theme.spacing(4)})`,
-  //     mask: (theme) =>
-  //       `linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default} 18%, transparent 100%)`,
-  //     background: (theme) =>
-  //       `linear-gradient(180deg,${hexToRGBA(
-  //         theme.palette.background.default,
-  //         0.7
-  //       )} 44%, ${hexToRGBA(theme.palette.background.default, 0.43)} 73%, ${hexToRGBA(
-  //         theme.palette.background.default,
-  //         0
-  //       )})`
-  //   }
-  // }
 
   if (appBar === 'hidden') {
     return null
