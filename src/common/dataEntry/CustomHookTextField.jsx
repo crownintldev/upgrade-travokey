@@ -47,9 +47,9 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
         case 'passportNumber':
           value = formatPassportNumber(value)
           break
-        case 'dateOfIssue':
-        case 'dateOfBirth':
-        case 'dateOfExpire':
+        case 'doi':
+        case 'dob':
+        case 'doe':
           value = formatDate(value)
           break
         default:
@@ -71,9 +71,7 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
             required: true,
             validate: {
               validDate: (value) =>
-                item.name === 'dateOfExpire' ||
-                item.name === 'dateOfIssue' ||
-                item.name === 'dateOfBirth'
+                item.name === 'doe' || item.name === 'doi' || item.name === 'dob'
                   ? isValidDate(value) || 'Invalid date'
                   : true
             }

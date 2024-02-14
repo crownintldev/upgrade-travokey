@@ -57,10 +57,10 @@ const schema = yup.object().shape({
     .max(15, 'CNIC must be 15 numbers or less')
     .typeError('Invalid CNIC format, only numbers are allowed'),
   country: yup.string().required('Country is required'),
-  dob: yup.date().required('Date of Birth is required'),
-  dateOfBirth: yup.number().required('Date of birth is required'),
-  dateOfIssue: yup.number().required('Date of issue is required'),
-  dateOfExpire: yup.number().required('Date of expire is required'),
+  // dob: yup.date().required('Date of Birth is required'),
+  dob: yup.number().required('Date of birth is required'),
+  doi: yup.number().required('Date of issue is required'),
+  doe: yup.number().required('Date of expire is required'),
   // doi: yup.string().required('Digital Object Identifier'),
   // doe: yup.date().required('Date of Expiry is required'),
   pob: yup.string().required('Place of Birth is required'),
@@ -72,6 +72,7 @@ const schema = yup.object().shape({
   remarks: yup.string().required('Remarks is required'),
   surname: yup.string().required('Surname is required'),
   onModel: yup.string().required('Refer Category is required'),
+  // by: yup.string().required('Refer is required'),
   by: yup.string().required('Refer is required'),
   files: yup.array().required('Files Are Missing')
 })
@@ -202,17 +203,17 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
       required: true
     },
     {
-      name: 'dateOfBirth',
+      name: 'dob',
       required: true,
       placeholder: 'Insert date of birth'
     },
     {
-      name: 'dateOfIssue',
+      name: 'doi',
       required: true,
       placeholder: 'Insert date of issue'
     },
     {
-      name: 'dateOfExpire',
+      name: 'doe',
       required: true,
       placeholder: 'Insert date of expire'
     }
@@ -236,24 +237,6 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
     }
   ]
 
-  const iconStyles = {
-    fontSize: '14px',
-    position: 'relative',
-    top: '2px',
-    left: '-3px'
-  }
-  const listStyles = {
-    borderLeft: '2px solid #1852fe',
-    height: '42px',
-    marginBottom: '5px'
-  }
-
-  const supplier = useSelector((state) =>
-    state?.supplier?.data?.map((item) => ({
-      name: `${item.name} ${item.phone}`,
-      _id: item._id
-    }))
-  )
   let byItems = []
   let fetchMember
   let MemberForm

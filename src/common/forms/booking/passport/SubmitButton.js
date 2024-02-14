@@ -57,6 +57,8 @@ const PassportSubmitButton = ({
           `${process.env.NEXT_PUBLIC_API}/passport/update/${editId}`,
           formData
         )
+
+        console.log('form data', data)
         toast.success('Update Successfully', { position: 'top-center' })
         dispatch(
           fetchVisaBooking({
