@@ -73,7 +73,13 @@ const VerticalLayout = (props) => {
 
   return (
     <>
-      <VerticalLayoutWrapper className='layout-wrapper'>
+      <AppBar
+        toggleNavVisibility={toggleNavVisibility}
+        appBarContent={verticalLayoutProps.appBar?.content}
+        appBarProps={verticalLayoutProps.appBar?.componentProps}
+        {...props}
+      />
+      <VerticalLayoutWrapper>
         {/* Navigation Menu */}
         {navHidden && !(navHidden && settings.lastLayout === 'horizontal') ? null : (
           <>
@@ -107,6 +113,7 @@ const VerticalLayout = (props) => {
             /> */}
           </>
         )}
+
         <MainContentWrapper
           className='layout-content-wrapper'
           sx={{
@@ -115,12 +122,6 @@ const VerticalLayout = (props) => {
           }}
         >
           {/* AppBar Component */}
-          <AppBar
-            toggleNavVisibility={toggleNavVisibility}
-            appBarContent={verticalLayoutProps.appBar?.content}
-            appBarProps={verticalLayoutProps.appBar?.componentProps}
-            {...props}
-          />
 
           {/* Content */}
           <ContentWrapper

@@ -26,16 +26,7 @@ const MainMenu = (Props) => {
 
   return (
     <>
-      <div className='flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700 border-l-1'>
-        <Link href='/'>
-          <Avatar>
-            <AvatarImage
-              src='https://travokey.up.railway.app/images/favicon.svg'
-              className='h-14 pb-4'
-            />
-            <AvatarFallback>crown logo</AvatarFallback>
-          </Avatar>
-        </Link>
+      <div className='flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700 border-l-1 mt-10'>
         {mainNavLinks.map((item) => (
           <div
             key={item.title}
