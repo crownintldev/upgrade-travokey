@@ -182,3 +182,94 @@
 // }
 
 // export default Navigation
+
+import React from 'react'
+import Link from 'next/link'
+
+const Navigation = ({ menuItems }) => {
+  console.log('menu items', menuItems)
+
+  return (
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '18rem',
+        padding: '3rem 0'
+      }}
+    >
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {menuItems &&
+          menuItems.map((menuItem, index) => (
+            <li key={index} style={{ marginBottom: '0.5rem' }}>
+              {menuItem.children ? (
+                <React.Fragment>
+                  <input
+                    style={{ display: 'none' }}
+                    type='checkbox'
+                    id={`menu-${index}`}
+                  />
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      borderRadius: '0.75rem',
+                      border: '1px solid #d1d5db',
+                      backgroundColor: '#f9fafb',
+                      padding: '0.75rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {/* Icon */}
+                    <label
+                      htmlFor={`menu-${index}`}
+                      style={{ position: 'absolute', inset: 0, cursor: 'pointer' }}
+                    ></label>
+                  </div>
+                  <ul
+                    style={{
+                      maxHeight: 0,
+                      overflow: 'hidden',
+                      transition: 'max-height 0.3s ease'
+                    }}
+                  >
+                    {menuItem.children.map((child, childIndex) => (
+                      <Link href={child.path || '/'} key={childIndex}>
+                        <li
+                          style={{
+                            cursor: 'pointer',
+                            padding: '0.75rem',
+                            borderRadius: '0.75rem',
+                            backgroundColor: '#f3f4f6',
+                            margin: '0.5rem'
+                          }}
+                        >
+                          {child.title}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                </React.Fragment>
+              ) : (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    borderRadius: '0.75rem',
+                    backgroundColor: '#f9fafb',
+                    padding: '0.75rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {menuItem.title}
+                </div>
+              )}
+            </li>
+          ))}
+      </ul>
+    </div>
+  )
+}
+
+export default Navigation

@@ -19,6 +19,8 @@ import Navigation from './components/vertical/navigation'
 import Footer from './components/shared-components/footer'
 import ScrollToTop from 'src/@core/components/scroll-to-top'
 import AppsMenu from './components/vertical/appsMenu'
+import { homeItems } from './components/vertical/navigation/ChildMenuItems'
+import MainMenu from './components/vertical/nav-sidebar/page'
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
@@ -75,7 +77,8 @@ const VerticalLayout = (props) => {
         {/* Navigation Menu */}
         {navHidden && !(navHidden && settings.lastLayout === 'horizontal') ? null : (
           <>
-            <AppsMenu
+            <MainMenu />
+            {/* <AppsMenu
               navWidth={navWidth}
               navVisible={navVisible}
               setNavVisible={setNavVisible}
@@ -83,17 +86,9 @@ const VerticalLayout = (props) => {
               toggleNavVisibility={toggleNavVisibility}
               navigationBorderWidth={navigationBorderWidth}
               verticalNavItems={verticalLayoutProps.navApps}
-              // ========
-              // navMenuContent={verticalLayoutProps.navMenu.content}
-              // navMenuBranding={verticalLayoutProps.navMenu.branding}
-              // menuLockedIcon={verticalLayoutProps.navMenu.lockedIcon}
-              // navMenuProps={verticalLayoutProps.navMenu.componentProps}
-              // menuUnlockedIcon={verticalLayoutProps.navMenu.unlockedIcon}
-              // afterNavMenuContent={verticalLayoutProps.navMenu.afterContent}
-              // beforeNavMenuContent={verticalLayoutProps.navMenu.beforeContent}
               {...props}
-            />
-            <Navigation
+            /> */}
+            {/* <Navigation
               navWidth={navWidth}
               navVisible={navVisible}
               setNavVisible={setNavVisible}
@@ -109,7 +104,7 @@ const VerticalLayout = (props) => {
               afterNavMenuContent={verticalLayoutProps.navMenu.afterContent}
               beforeNavMenuContent={verticalLayoutProps.navMenu.beforeContent}
               {...props}
-            />
+            /> */}
           </>
         )}
         <MainContentWrapper
