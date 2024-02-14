@@ -90,6 +90,7 @@ const CustomHookTextField = ({ chooseFields, control, errors, item }) => {
                   ? capitalizeValue(value)
                   : ''
               }
+              // value='test'
               sx={{ mb: 4 }}
               label={label ? label : capitalizeCamelSpace(name)}
               onChange={handleOnChange(item, onChange)}

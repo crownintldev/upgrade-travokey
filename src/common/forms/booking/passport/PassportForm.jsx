@@ -2,13 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import TextareaAutosize from '@mui/material/TextareaAutosize'
-import PhoneIcon from '@mui/icons-material/Phone' // Import an appropriate icon from Material-UI
-import Person from '@mui/icons-material/Person' // Import an appropriate icon from Material-UI
-import { Grid, Input } from '@mui/material'
-import Box, { BoxProps } from '@mui/material/Box'
+import { Button } from '@/components/ui/button'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
@@ -272,59 +266,55 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
     <div>
       {/* <MuiTextAreaHookField/> */}
       <form>
-        <Grid container spacing={6}>
+        <div className='flex gap-5 flex-wrap'>
           {passportField1.map((item) => (
-            <Grid item md={6} lg={4} key={item.name}>
+            <div item key={item.name}>
               <CustomHookTextField item={item} control={control} errors={errors} />
-            </Grid>
+            </div>
           ))}
 
-          <Grid item md={6} lg={4}>
-            <SimpleSelectHookField
-              control={control}
-              errors={errors}
-              name={'country'}
-              options={countryOptions}
-              label={'Country'}
-              placeholder='Search Countries'
-              select={true}
-              MenuProps={{
-                disablePortal: true,
-                disableCloseOnSelect: true
-              }}
-            />
-          </Grid>
-          <Grid item md={6} lg={4}>
-            <SimpleSelectHookField
-              control={control}
-              errors={errors}
-              name={'nationality'}
-              options={countryOptions}
-              label={'Nationality'}
-              placeholder='Search Nationality'
-              select={true}
-              MenuProps={{
-                disablePortal: true,
-                disableCloseOnSelect: true
-              }}
-            />
-          </Grid>
-          <Grid item md={6} lg={4}>
-            <SimpleSelectHookField
-              control={control}
-              errors={errors}
-              name={'gender'}
-              options={['Male', 'Female', 'Other']}
-              label={'Gender'}
-              placeholder='Search Gender'
-              select={true}
-              MenuProps={{
-                disablePortal: true,
-                disableCloseOnSelect: true
-              }}
-            />
-          </Grid>
-          {/* <Grid item md={6} lg={4}>
+          <SimpleSelectHookField
+            control={control}
+            errors={errors}
+            name={'country'}
+            options={countryOptions}
+            label={'Country'}
+            placeholder='Search Countries'
+            select={true}
+            MenuProps={{
+              disablePortal: true,
+              disableCloseOnSelect: true
+            }}
+          />
+
+          <SimpleSelectHookField
+            control={control}
+            errors={errors}
+            name={'nationality'}
+            options={countryOptions}
+            label={'Nationality'}
+            placeholder='Search Nationality'
+            select={true}
+            MenuProps={{
+              disablePortal: true,
+              disableCloseOnSelect: true
+            }}
+          />
+          <SimpleSelectHookField
+            control={control}
+            errors={errors}
+            name={'gender'}
+            options={['Male', 'Female', 'Other']}
+            label={'Gender'}
+            placeholder='Search Gender'
+            select={true}
+            MenuProps={{
+              disablePortal: true,
+              disableCloseOnSelect: true
+            }}
+          />
+        </div>
+        {/* <Grid item md={6} lg={4}>
             <SimpleSelectHookField
               control={control}
               errors={errors}
@@ -339,7 +329,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               }}
             />
           </Grid> */}
-          {/* <Grid item md={6} lg={4} sx={{ mb: 4 }}>
+        {/* <Grid item md={6} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='dob'
               placeholder='Date of Birth'
@@ -348,7 +338,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               errors={errors}
             />
           </Grid> */}
-          {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
+        {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='doi'
               placeholder='Date of Issue'
@@ -357,7 +347,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
               errors={errors}
             />
           </Grid> */}
-          {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
+        {/* <Grid item md={4} lg={4} sx={{ mb: 4 }}>
             <DatePickerHookField
               name='doe'
               placeholder='Date of Expire'
@@ -368,46 +358,43 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
             />
           </Grid> */}
 
-          <Grid item md={6} lg={4}>
-            <SimpleSelectHookField
-              control={control}
-              errors={errors}
-              name={'religion'}
-              options={['Islam', 'Christan', 'Hindu', 'Sikh']}
-              label={'Religion'}
-              placeholder='Search Religion'
-              select={true}
-              MenuProps={{
-                disablePortal: true,
-                disableCloseOnSelect: true
-              }}
-            />
-          </Grid>
+        <div className='flex flex-wrap gap-5 mt-5'>
+          <SimpleSelectHookField
+            control={control}
+            errors={errors}
+            name={'religion'}
+            options={['Islam', 'Christan', 'Hindu', 'Sikh']}
+            label={'Religion'}
+            placeholder='Search Religion'
+            select={true}
+            MenuProps={{
+              disablePortal: true,
+              disableCloseOnSelect: true
+            }}
+          />
           {passportField2.map((item) => (
-            <Grid item md={6} lg={4} key={item.name}>
+            <div item key={item.name} className='flex flex-wrap gap-3'>
               <CustomHookTextField
                 item={item}
                 control={control}
                 errors={errors}
                 required={true}
               />
-            </Grid>
+            </div>
           ))}
-          <Grid item md={6} lg={4}>
-            <SimpleSelectHookField
-              control={control}
-              errors={errors}
-              name={'onModel'}
-              options={['Client', 'Company', 'Agent']}
-              label={'Refer Category'}
-              placeholder='Select Refer'
-              select={true}
-              MenuProps={{
-                disablePortal: true,
-                disableCloseOnSelect: true
-              }}
-            />
-          </Grid>
+          <SimpleSelectHookField
+            control={control}
+            errors={errors}
+            name={'onModel'}
+            options={['Client', 'Company', 'Agent']}
+            label={'Refer Category'}
+            placeholder='Select Refer'
+            select={true}
+            MenuProps={{
+              disablePortal: true,
+              disableCloseOnSelect: true
+            }}
+          />
           <CustomOpenDrawer
             ButtonTitle={`Add ${watchedOnModel}`}
             drawerTitle={`Add ${watchedOnModel} Form`}
@@ -416,66 +403,56 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
             formName={formName}
             api={api}
           />
-          <Grid item md={6} lg={4}>
-            <SelectHookField
-              control={control}
-              errors={errors}
-              name='by'
-              options={byItem ?? []}
-              showValue='name'
-              label='Refer'
-              placeholder='Choose Refer'
-            />
-          </Grid>
+          <SelectHookField
+            control={control}
+            errors={errors}
+            name='by'
+            options={byItem ?? []}
+            showValue='name'
+            label='Refer'
+            placeholder='Choose Refer'
+          />
+        </div>
 
-          {!editId ? (
-            <Grid item md={6}>
-              <Box sx={{ width: '200px' }}>
-                <Controller
-                  name='files'
-                  control={control}
-                  defaultValue={[]}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <>
-                      <label htmlFor='files'>Upload Files</label>
-                      <FilesUploader
-                        setFiles={setFiles}
-                        files={files}
-                        onChange={onChange}
-                      />
-                    </>
-                  )}
-                />
-              </Box>
-            </Grid>
-          ) : (
-            <Grid item md={6}>
-              <Box sx={{ width: '200px' }}>
-                <Controller
-                  name='files'
-                  control={control}
-                  defaultValue={[]}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <>
-                      <label htmlFor='files'>Upload Files</label>
-                      <EditFilesUploader
-                        setFiles={setFiles}
-                        previousFiles={previousFiles}
-                        setPreviousFiles={setPreviousFiles}
-                        removeFiles={removeFiles}
-                        setRemoveFiles={setRemoveFiles}
-                        files={files}
-                        prevFiles={editId?.files}
-                        onChange={onChange}
-                      />
-                    </>
-                  )}
-                />
-              </Box>
-            </Grid>
-          )}
-        </Grid>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {!editId ? (
+          <div>
+            <Controller
+              name='files'
+              control={control}
+              defaultValue={[]}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <label htmlFor='files'>Upload Files</label>
+                  <FilesUploader setFiles={setFiles} files={files} onChange={onChange} />
+                </>
+              )}
+            />
+          </div>
+        ) : (
+          <div>
+            <Controller
+              name='files'
+              control={control}
+              defaultValue={[]}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  <label htmlFor='files'>Upload Files</label>
+                  <EditFilesUploader
+                    setFiles={setFiles}
+                    previousFiles={previousFiles}
+                    setPreviousFiles={setPreviousFiles}
+                    removeFiles={removeFiles}
+                    setRemoveFiles={setRemoveFiles}
+                    files={files}
+                    prevFiles={editId?.files}
+                    onChange={onChange}
+                  />
+                </>
+              )}
+            />
+          </div>
+        )}
+        <div className='flex items-center'>
           <PassportSubmitButton
             editId={editId?.passportId || editId?._id || ''}
             dispatch={dispatch}
@@ -491,7 +468,7 @@ const PassportForm = ({ toggle, removeSelection, setFormSize, _id = '' }) => {
           <Button variant='tonal' color='secondary' onClick={handleClose}>
             Cancel
           </Button>
-        </Box>
+        </div>
       </form>
     </div>
   )

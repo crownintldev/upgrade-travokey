@@ -30,39 +30,40 @@ const EditFilesUploader = ({
 
   // ** Hooks
   const { getRootProps, getInputProps } = useDropzone({
-    onDrop: acceptedFiles => {
-      setFiles(acceptedFiles.map(file => Object.assign(file)))
+    onDrop: (acceptedFiles) => {
+      setFiles(acceptedFiles.map((file) => Object.assign(file)))
       if (onChange) {
         onChange(acceptedFiles) // Notify react-hook-form about the change
       }
     }
   })
 
-  const renderFilePreview = file => {
+  const renderFilePreview = (file) => {
     if (file.type.startsWith('image')) {
-      return <Image width={38} height={38} alt={file.name} src={URL.createObjectURL(file)} />
+      return (
+        <Image width={38} height={38} alt={file.name} src={URL.createObjectURL(file)} />
+      )
     } else {
       return <Icon icon='tabler:file-description' />
     }
   }
-  const renderPreviousFiles = file => {
-    
-    return <Image width={38} height={38} alt={file.name ?? ""} src={file.url ?? ""} />
+  const renderPreviousFiles = (file) => {
+    return <Image width={38} height={38} alt={file.name ?? ''} src={file.url ?? ''} />
   }
 
-  const handleRemoveFile = file => {
+  const handleRemoveFile = (file) => {
     const uploadedFiles = files
-    const filtered = uploadedFiles.filter(i => i.name !== file.name)
+    const filtered = uploadedFiles.filter((i) => i.name !== file.name)
     setFiles([...filtered])
   }
 
-  const handlePrevRemoveFile = file => {
-    let removeFile = previousFiles?.filter(prevFile => prevFile.url !== file.url)
+  const handlePrevRemoveFile = (file) => {
+    let removeFile = previousFiles?.filter((prevFile) => prevFile.url !== file.url)
     setPreviousFiles(removeFile)
     setRemoveFiles([...removeFiles, file?.fileId])
   }
 
-  const fileList = files.map(file => (
+  const fileList = files.map((file) => (
     <ListItem key={file.name}>
       <div className='file-details'>
         <div className='file-preview'>{renderFilePreview(file)}</div>
@@ -81,7 +82,7 @@ const EditFilesUploader = ({
     </ListItem>
   ))
 
-  const prevFileList = previousFiles?.map(file => (
+  const prevFileList = previousFiles?.map((file) => (
     <ListItem key={file.url}>
       <div className='file-details'>
         <div className='file-preview'>{renderPreviousFiles(file)}</div>
@@ -111,7 +112,7 @@ const EditFilesUploader = ({
           id={'files'}
         /> */}
         <Box
-         sx={{
+          sx={{
             cursor: 'pointer',
             padding: 2,
             margin: 'auto',
@@ -133,7 +134,7 @@ const EditFilesUploader = ({
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              backgroundColor: theme => `rgba(${theme.palette.customColors.main}, 0.08)`
+              backgroundColor: (theme) => `rgba(${theme.palette.customColors.main}, 0.08)`
             }}
           >
             <Icon icon='tabler:upload' fontSize='1.2rem' />

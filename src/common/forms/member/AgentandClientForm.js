@@ -7,7 +7,7 @@ import CommonForm1 from '../commonForms/CommonForm1'
 
 const schema = yup.object().shape({
   fullName: yup.string().required('required'),
-  phone: yup.number().required('required'),
+  phone: yup.number().required('required')
 })
 
 const defaultValues = {

@@ -24,6 +24,7 @@ const PassportSubmitButton = ({
   const toggleDrawer = () => setDrawerOpen(!drawerOpen)
   let data = watch()
 
+  console.log('s data', data)
   const onSubmit = async () => {
     let formData = new FormData()
     try {

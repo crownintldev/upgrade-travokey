@@ -44,7 +44,7 @@ const ContentWrapper = styled('main')(({ theme }) => ({
   }
 }))
 
-const VerticalLayout = props => {
+const VerticalLayout = (props) => {
   // ** Props
   const {
     hidden,
@@ -114,7 +114,10 @@ const VerticalLayout = props => {
         )}
         <MainContentWrapper
           className='layout-content-wrapper'
-          sx={{ ...(contentHeightFixed && { maxHeight: '100vh' }), background: '#0064ff38' }}
+          sx={{
+            ...(contentHeightFixed && { maxHeight: '100vh' }),
+            background: '#0064ff38'
+          }}
         >
           {/* AppBar Component */}
           <AppBar
@@ -143,7 +146,11 @@ const VerticalLayout = props => {
           </ContentWrapper>
 
           {/* Footer Component */}
-          <Footer footerStyles={footerProps?.sx} footerContent={footerProps?.content} {...props} />
+          <Footer
+            footerStyles={footerProps?.sx}
+            footerContent={footerProps?.content}
+            {...props}
+          />
         </MainContentWrapper>
       </VerticalLayoutWrapper>
 

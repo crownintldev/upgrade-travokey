@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useTheme } from '@mui/material/styles'
-
-// ** MUI Imports
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-
-import Box from '@mui/material/Box'
-
-// ** Custom Component Import
-import CustomTextField from 'src/@core/components/mui/text-field'
-
-// ** helper function
-import { capitalizeValue, capitalizeCamelSpace } from 'src/utils/helperfunction'
-
 //get by data
 import axios from 'axios'
+import { Button } from '@/components/ui/button'
 
 // ** Third Party Imports
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -35,7 +22,9 @@ const CommonForm1 = ({
   chooseFields
 }) => {
   const dispatch = useDispatch()
-  let editId = useSelector(state => state[stateSelector]?.data?.find(item => item._id === _id))
+  let editId = useSelector((state) =>
+    state[stateSelector]?.data?.find((item) => item._id === _id)
+  )
 
   const {
     reset,
@@ -52,7 +41,7 @@ const CommonForm1 = ({
   })
   useEffect(() => {
     if (editId) {
-      Object.keys(editId).forEach(key => {
+      Object.keys(editId).forEach((key) => {
         setValue(key, editId[key])
       })
     } else {
@@ -66,30 +55,46 @@ const CommonForm1 = ({
     reset()
   }
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     if (editId) {
-      updateApi({ _id, api, data, dispatch, fetchData: fetchApi, toggle, reset, removeSelection })
+      updateApi({
+        _id,
+        api,
+        data,
+        dispatch,
+        fetchData: fetchApi,
+        toggle,
+        reset,
+        removeSelection
+      })
     } else {
-      createApi({ api, data, dispatch, fetchData: fetchApi, toggle, reset, removeSelection })
+      createApi({
+        api,
+        data,
+        dispatch,
+        fetchData: fetchApi,
+        toggle,
+        reset,
+        removeSelection
+      })
     }
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-      
         {chooseFields.map((item, index) => {
           return <CustomHookTextField item={item} control={control} errors={errors} />
         })}
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <div sx={{ display: 'flex', alignItems: 'center' }}>
           <Button type='submit' variant='contained' sx={{ mr: 3 }}>
             Submit
           </Button>
           <Button variant='tonal' color='secondary' onClick={handleClose}>
             Cancel
           </Button>
-        </Box>
+        </div>
       </form>
     </div>
   )
